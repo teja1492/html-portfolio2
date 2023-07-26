@@ -1,0 +1,17 @@
+What is different types of enhancement.
+
+Difference between user exit and customer exit.
+
+What are ddic object.
+
+How to create TMG.
+
+Events of ALV report.
+
+Difference between tamplete and table in smartforms.
+
+Types of function module.
+
+Difference between RFC function module and bapi.
+
+Apart from questions you have given

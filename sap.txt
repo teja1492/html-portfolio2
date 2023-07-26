@@ -1,0 +1,38 @@
+*&---------------------------------------------------------------------*
+*& Report  ZSD_SALES_REPORT
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+REPORT  ZSD_SALES_REPORT.
+TABLES ekko.
+TYPEs: begin of ty_ekko,
+        ebeln type ekko-ebeln,
+        bukrs type ekko-bukrs,
+      end of ty_ekko.
+
+
+data : it_ekko TYPE TABLE OF ty_ekko, ""Internal table --Multiple records --0 to n
+       wa_ekko TYPE ty_ekko. "" Workarea-- hold a single
+**Selection-screen desing
+
+SELECT-OPTIONS: s_AEDAT FOR ekko-AEDAT.
+
+***Select statements
+SELECT ebeln bukrs from ekko into TABLE it_ekko
+                   WHERE aedat in s_aedat.
+  if sy-subrc = 0.
+    MESSAGE 'Itab data fetched from ekko' TYPE 'S'. "" S/I/W
+    else.
+      MESSAGE 'No data found' TYPE 'E'. ""E/A
+    ENDIF.
+
+SELECT SINGLE ebeln bukrs from ekko INTO wa_ekko
+              WHERE aedat in s_aedat.
+    if sy-subrc = 0.
+    MESSAGE 'Data fetched from ekko' TYPE 'S'. "" S/I/W
+    else.
+      MESSAGE 'No data found' TYPE 'E'. ""E/A
+    ENDIF.\
